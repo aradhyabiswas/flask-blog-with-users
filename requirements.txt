@@ -9,3 +9,4 @@ WTForms
 SQLAlchemy>=2.0.51
 Werkzeug
 psycopg2-binary>=2.9.12
+gunicorn==23.0.0
