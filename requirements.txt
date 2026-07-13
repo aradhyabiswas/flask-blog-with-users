@@ -1,0 +1,11 @@
+Flask
+Bootstrap-Flask
+Flask-CKEditor
+Flask-Gravatar
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+WTForms
+SQLAlchemy>=2.0.51
+Werkzeug
+psycopg2-binary>=2.9.12
