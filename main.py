@@ -35,7 +35,7 @@ class User(UserMixin, db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(50), unique=True)
     email: Mapped[str] = mapped_column(String(250))
-    password: Mapped[str] = mapped_column(String(100))
+    password: Mapped[str] = mapped_column(String(250))
     posts: Mapped["BlogPost"] = relationship(back_populates="author")
     comments: Mapped["Comment"] = relationship(back_populates="author")
 
@@ -68,6 +68,17 @@ class Comment(db.Model):
 
 with app.app_context():
     db.create_all()
+
+with app.app_context():
+    db.create_all()
+
+    if app.config["SQLALCHEMY_DATABASE_URI"].startswith("postgresql"):
+        db.session.execute(
+            db.text(
+                "ALTER TABLE users ALTER COLUMN password TYPE VARCHAR(250)"
+            )
+        )
+        db.session.commit()
 
 @login_manager.user_loader
 def load_user(user_id):
