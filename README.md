@@ -141,8 +141,8 @@ pip install -r requirements.txt
 Create the required environment variables:
 
 ```text
-SECRET_KEY=your_secret_key
-DATABASE_URL=your_postgresql_database_url
+FLASK_KEY=your_secret_key
+DB_URI=your_postgresql_database_url
 ```
 
 ### 7. Run the Application
