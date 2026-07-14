@@ -36,8 +36,8 @@ class User(UserMixin, db.Model):
     name: Mapped[str] = mapped_column(String(50), unique=True)
     email: Mapped[str] = mapped_column(String(250))
     password: Mapped[str] = mapped_column(String(250))
-    posts: Mapped["BlogPost"] = relationship(back_populates="author")
-    comments: Mapped["Comment"] = relationship(back_populates="author")
+    posts: Mapped[list["BlogPost"]] = relationship(back_populates="author")
+    comments: Mapped[list["Comment"]] = relationship(back_populates="author")
 
     def avatar(self, size=100):
         email = self.email.strip().lower()
